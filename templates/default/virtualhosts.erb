@@ -1,0 +1,26 @@
+# Check for nodes
+# if node X listen on port 80, if node Y listen on port 8080
+
+<%
+=begin %>
+<% if node['ipaddress'] != '10.160.152.171' -%>
+   Listen <%= @port %>
+<% end -%>
+<%
+=end %>
+
+<% if @port != 80 -%>
+   Listen <%= @port %>
+<% end -%>
+
+
+<VirtualHost *:<%= @port %>>
+   ServerAdmin  <%= @serveradmin %>
+   ServerName   <%= @servername  %>
+   ServerAlias www.<%= @servername %>
+   DocumentRoot <%= @document_root %>/public_html
+   ErrorLog     <%= @document_root %>/logs/error.log
+   <Directory <%= @document_root %>/public_html>
+      Require all granted
+   </Directory>
+</VirtualHost>

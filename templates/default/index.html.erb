@@ -1,0 +1,9 @@
+<html>
+   <body>
+     <h1> This is the default Port 80 </h1>
+     <% if node['ipaddress'] == '10.160.152.171' -%>
+        This is the node you are looking for.
+     <% end -%>
+     <%= node['ipaddress'] %>:<%= @port %>
+   </body>
+</html>
